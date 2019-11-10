@@ -3,13 +3,13 @@ import ReactGA from "react-ga";
 export const initGA = () => {
   if (
     !(
-      process.env.NODE_ENV !== "production" &&
+      process.env.NODE_ENV === "production" &&
       process.env.GOOGLE_ANALYTICS_TRACKER_ID
     )
   ) {
     return;
   }
-  ReactGA.initialize(process.env.GOOGLE_ANALYTICS_TRACKER_ID);
+  ReactGA.initialize(process.env.GOOGLE_ANALYTICS_TRACKER_ID, { debug: true });
 };
 export const logPageView = () => {
   if (process.env.NODE_ENV !== "production") {

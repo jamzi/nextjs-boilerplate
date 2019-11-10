@@ -5,9 +5,11 @@ import * as Sentry from "@sentry/browser";
 
 import { initGA, logPageView } from "../utils/analytics";
 
-Sentry.init({
-  dsn: process.env.SENTRY_DSN
-});
+if (process.env.NODE_ENV === "production") {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN
+  });
+}
 
 export default class MyApp extends App {
   componentDidMount() {
